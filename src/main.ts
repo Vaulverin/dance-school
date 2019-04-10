@@ -1,14 +1,15 @@
 import Vue from 'vue';
 import './plugins/vuetify';
-import App from './App.vue';
 import router from './router';
-import store from './store';
+import store from './store/store';
 import './registerServiceWorker';
+import App from '@/App.vue';
 
 Vue.config.productionTip = false;
 
-new Vue({
+const vm = new Vue({
+  el: '#app',
   router,
   store,
   render: (h) => h(App),
-}).$mount('#app');
+});
