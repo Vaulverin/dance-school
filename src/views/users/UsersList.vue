@@ -1,28 +1,37 @@
 <template>
-    <div>
-        <v-text-field
-                :value="searchText"
-                @keyup="search"
-                @click:clear="search"
-                single-line
-                clearable
-                label="Поиск"
-                type="text"
-        />
-        <v-list>
-            <v-list-tile v-for="(user, index) in users"
-                         :key="index"
-                         @click="$router.push({name: 'transfers.add', params: {userId: user.id}})">
-                <v-list-tile-content>
-                    <v-list-tile-title>{{user.name}}</v-list-tile-title>
-                </v-list-tile-content>
-            </v-list-tile>
-        </v-list>
-    </div>
+    <v-layout row wrap>
+        <v-flex xs12>
+            <v-text-field
+                    :value="searchText"
+                    @keyup="search"
+                    @click:clear="search"
+                    single-line
+                    clearable
+                    label="Поиск"
+                    type="text"
+            />
+        </v-flex>
+        <v-flex xs12>
+            <v-card>
+                <v-list>
+                    <template v-for="(user, index) in users">
+                        <v-list-tile :key="index"
+                                     @click="$router.push({name: 'transfers.add', params: {userId: user.id}})">
+                            <v-list-tile-content>
+                                <v-list-tile-title>{{user.name}}</v-list-tile-title>
+                            </v-list-tile-content>
+                        </v-list-tile>
+                    </template>
+                    <v-card-text v-show="!users.length">Ни чего не найдено</v-card-text>
+                </v-list>
+            </v-card>
+        </v-flex>
+    </v-layout>
 </template>
 
 <script>
-  import { mapGetters } from 'vuex';
+  import {mapGetters} from 'vuex';
+
   export default {
     name: "Lesson",
     data() {

@@ -6,6 +6,11 @@ import './registerServiceWorker';
 import App from '@/App.vue';
 
 Vue.config.productionTip = false;
+Vue.mixin({
+  methods: {
+    money: (sum: number) => sum + ' ₽',
+  },
+});
 
 const vm = new Vue({
   el: '#app',

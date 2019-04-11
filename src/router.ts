@@ -5,6 +5,7 @@ import UsersList from '@/views/users/UsersList.vue';
 import UsersListControls from '@/views/users/UsersListControls.vue';
 import UsersCreate from '@/views/users/UsersCreate.vue';
 import TransfersAdd from '@/views/transfers/TransfersAdd.vue';
+import TransfersList from '@/views/transfers/TransfersList.vue';
 import Lesson from '@/views/Lesson.vue';
 import App from '@/App.vue';
 
@@ -31,6 +32,11 @@ export default new Router({
       path: '/transfers/add',
       name: 'transfers.add',
       component: {render: (h) => h(TransfersAdd)},
+    },
+    {
+      path: '/transfers/list',
+      name: 'transfers.list',
+      component: {render: (h) => h(TransfersList)},
     },
     // {
     //   path: '/',

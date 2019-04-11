@@ -69,7 +69,7 @@
     },
     methods: {
       transfer() {
-        let transfer = new Transfer(-1, this.userId, this.sum, this.comment);
+        let transfer = new Transfer(-1, Date.now(), this.userId, parseFloat(this.sum), this.comment);
         this.$store.dispatch('transfers/create', transfer);
         this.$refs.form.reset();
         this.$store.commit('addNotification', 'Трансфер добавлен!');

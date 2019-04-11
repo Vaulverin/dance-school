@@ -53,7 +53,7 @@
         drawer: false,
         items: [
           {title: 'Ученики', icon: 'people', pathName: 'users.list'},
-          {title: 'Баланс', icon: 'money', pathName: 'money.balance'},
+          {title: 'Баланс', icon: 'money', pathName: 'transfers.list'},
         ]
       };
     },

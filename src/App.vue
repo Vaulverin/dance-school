@@ -40,7 +40,7 @@
     },
     computed: {
       isFirstView() {
-        return this.$route.path === '/';
+        return this.$store.state.firstViews.indexOf(this.$route.name) !== -1;
       },
       title() {
         return this.$store.state.viewTitle;

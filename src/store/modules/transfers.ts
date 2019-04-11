@@ -3,14 +3,24 @@ import Transfer from '@/models/Transfer';
 export default {
   namespaced: true,
   state: {
-    items: [],
+    items: [
+      new Transfer(1, Date.now(), 1, 2000, 'абонемент на 8'),
+      new Transfer(2, Date.now(), 1, 10, 'Донат'),
+      new Transfer(3, Date.now(), 1, -200, 'Чаёк с печенками'),
+      new Transfer(4, Date.now(), 1, 1000, 'абонемент на 4'),
+    ],
   },
   getters: {
     getById: (state: any) => (id: number) => {
       return state.items.find((e: Transfer) => e.id === id);
     },
-    payments(state: any) {
-      return [...state.items];
+    transfers(state: any) {
+      const items = [...state.items];
+      return items.sort((a: Transfer, b: Transfer) => {
+        if (a.timestamp > b.timestamp) { return -1; }
+        if (a.timestamp < b.timestamp) { return 1; }
+        return 0;
+      });
     },
   },
   mutations: {
