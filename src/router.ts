@@ -4,6 +4,7 @@ import Today from '@/views/Today.vue';
 import UsersList from '@/views/users/UsersList.vue';
 import UsersListControls from '@/views/users/UsersListControls.vue';
 import UsersCreate from '@/views/users/UsersCreate.vue';
+import TransfersAdd from '@/views/transfers/TransfersAdd.vue';
 import Lesson from '@/views/Lesson.vue';
 import App from '@/App.vue';
 
@@ -15,7 +16,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'users.list',
       components: {
         default: {render: (h) => h(UsersList)},
         controls: {render: (h) => h(UsersListControls)},
@@ -25,6 +26,11 @@ export default new Router({
       path: '/users/create',
       name: 'users.create',
       component: {render: (h) => h(UsersCreate)},
+    },
+    {
+      path: '/transfers/add',
+      name: 'transfers.add',
+      component: {render: (h) => h(TransfersAdd)},
     },
     // {
     //   path: '/',

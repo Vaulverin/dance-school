@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import users from '@/store/modules/users';
+import transfers from '@/store/modules/transfers';
 
 Vue.use(Vuex);
 
@@ -44,6 +45,7 @@ export default new Vuex.Store({
 
   modules: {
     users,
+    transfers,
   },
 
   strict: debug,

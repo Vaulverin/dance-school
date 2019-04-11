@@ -3,6 +3,7 @@
         <v-text-field
                 :value="searchText"
                 @keyup="search"
+                @click:clear="search"
                 single-line
                 clearable
                 label="Поиск"
@@ -11,7 +12,7 @@
         <v-list>
             <v-list-tile v-for="(user, index) in users"
                          :key="index"
-                         @click="">
+                         @click="$router.push({name: 'transfers.add', params: {userId: user.id}})">
                 <v-list-tile-content>
                     <v-list-tile-title>{{user.name}}</v-list-tile-title>
                 </v-list-tile-content>

@@ -15,7 +15,11 @@ export default {
       if (state.searchText) {
         items = items.filter((e: User) => e.name.toLowerCase().includes(state.searchText.toLowerCase()));
       }
-      return items;
+      return items.sort((a, b) => {
+        if (a.name < b.name) { return -1; }
+        if (a.name > b.name) { return 1; }
+        return 0;
+      });
     },
   },
   mutations: {
@@ -30,10 +34,10 @@ export default {
     load(context: any) {
       return new Promise((resolve, reject) => {
         const users = [
-          new User(1, 'Ксения', 'Рычкова', '', ''),
-          new User(2, 'Сергей', 'Толкачев', '', ''),
-          new User(3, 'Ангелина', '', '', ''),
-          new User(4, 'Оля', '', '', ''),
+          new User(1, 'Ксения', 'Рычкова'),
+          new User(2, 'Сергей', 'Толкачев'),
+          new User(3, 'Ангелина', ''),
+          new User(4, 'Оля', ''),
         ];
         context.commit('add', users);
         resolve(context.state.items);

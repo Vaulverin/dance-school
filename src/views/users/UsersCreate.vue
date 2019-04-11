@@ -50,7 +50,6 @@
         let user = new User(-1, this.firstName, this.lastName, this.email, '');
         this.$store.dispatch('users/create', user);
         this.$refs.form.reset();
-        // this.$store.commit('addSuccessAlert', 'Пользователь успешно добавлен!');
         this.$store.commit('addNotification', 'Пользователь успешно добавлен!');
       }
     },
