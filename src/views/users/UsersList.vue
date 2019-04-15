@@ -16,7 +16,7 @@
                 <v-list>
                     <template v-for="(user, index) in users">
                         <v-list-tile :key="index"
-                                     @click="$router.push({name: 'transfers.add', params: {userId: user.id}})">
+                                     @click="$router.push({name: 'transfers.add', query: {userId: user.id}})">
                             <v-list-tile-content>
                                 <v-list-tile-title>{{user.name}}</v-list-tile-title>
                             </v-list-tile-content>

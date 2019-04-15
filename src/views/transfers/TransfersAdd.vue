@@ -35,7 +35,7 @@
                 color="primary"
                 @click="transfer"
         >
-            Перевести
+            Отправить
         </v-btn>
 
     </v-form>
@@ -58,11 +58,14 @@
           v => !!v || 'Выберите пользователя!',
         ],
         comment: '',
-        userId: this.$route.params.userId,
+        userId: this.$route.query.userId,
       }
     },
     created() {
       this.$store.commit('setViewTitle', 'Трансфер');
+      if (this.users.length === 0) {
+        this.$store.dispatch('users/load');
+      }
     },
     computed: {
       ...mapGetters('users', ['getById', 'users']),
