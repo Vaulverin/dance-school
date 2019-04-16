@@ -4,7 +4,7 @@
 
         <v-card>
             <v-list three-line>
-                <template v-for="(transfer, index) in transfers">
+                <template v-for="(transfer, index) in cashFlow">
                     <v-list-tile :key="transfer.id">
                         <v-list-tile-content>
                             <v-list-tile-title>{{money(transfer.sum)}}</v-list-tile-title>
@@ -20,7 +20,7 @@
 
                     </v-list-tile>
                     <v-divider
-                            v-if="index + 1 < transfers.length"
+                            v-if="index + 1 < cashFlow.length"
                     ></v-divider>
                 </template>
             </v-list>
@@ -32,12 +32,12 @@
   import {mapGetters} from 'vuex';
 
   export default {
-    name: "TransfersList",
+    name: "CashFlowList",
     computed: {
-      ...mapGetters('transfers', ['transfers']),
+      ...mapGetters('cashFlow', ['cashFlow']),
       ...mapGetters('users', ['getById']),
       sum() {
-        return this.transfers.reduce((total, item) => total + item.sum, 0);
+        return this.cashFlow.reduce((total, item) => total + item.sum, 0);
       },
     },
     methods: {

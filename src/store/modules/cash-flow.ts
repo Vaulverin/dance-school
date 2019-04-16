@@ -1,22 +1,22 @@
-import Transfer from '@/models/Transfer';
+import CashFlowActivity from '@/models/CashFlowActivity';
 
 export default {
   namespaced: true,
   state: {
     items: [
-      new Transfer(1, Date.now(), 1, 2000, 'абонемент на 8'),
-      new Transfer(2, Date.now(), 1, 10, 'Донат'),
-      new Transfer(3, Date.now(), 1, -200, 'Чаёк с печенками'),
-      new Transfer(4, Date.now(), 1, 1000, 'абонемент на 4'),
+      new CashFlowActivity(1, Date.now(), 1, 2000, 'абонемент на 8'),
+      new CashFlowActivity(2, Date.now(), 1, 10, 'Донат'),
+      new CashFlowActivity(3, Date.now(), 1, -200, 'Чаёк с печенками'),
+      new CashFlowActivity(4, Date.now(), 1, 1000, 'абонемент на 4'),
     ],
   },
   getters: {
     getById: (state: any) => (id: number) => {
-      return state.items.find((e: Transfer) => e.id === id);
+      return state.items.find((e: CashFlowActivity) => e.id === id);
     },
-    transfers(state: any) {
+    cashFlow(state: any) {
       const items = [...state.items];
-      return items.sort((a: Transfer, b: Transfer) => {
+      return items.sort((a: CashFlowActivity, b: CashFlowActivity) => {
         if (a.timestamp > b.timestamp) { return -1; }
         if (a.timestamp < b.timestamp) { return 1; }
         return 0;
@@ -24,7 +24,7 @@ export default {
     },
   },
   mutations: {
-    add(state: any, items: Transfer[]) {
+    add(state: any, items: CashFlowActivity[]) {
       state.items = state.items.concat(items);
     },
   },
@@ -34,7 +34,7 @@ export default {
         resolve();
       });
     },
-    async create(context: any, item: Transfer) {
+    async create(context: any, item: CashFlowActivity) {
       const payments = context.state.items;
       if (payments.length === 0) {
         item.id = 1;

@@ -53,7 +53,8 @@
         drawer: false,
         items: [
           {title: 'Ученики', icon: 'people', pathName: 'users.list'},
-          {title: 'Баланс', icon: 'money', pathName: 'transfers.list'},
+          {title: 'Движение ДС', icon: 'money', pathName: 'cash-flow.list'},
+          {title: 'Категории ДДС', icon: 'category', pathName: 'cf-categories.list'},
         ]
       };
     },

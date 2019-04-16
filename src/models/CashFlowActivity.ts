@@ -1,4 +1,4 @@
-export default class Transfer {
+export default class CashFlowActivity {
   constructor(
     public id: number,
     public timestamp: number,

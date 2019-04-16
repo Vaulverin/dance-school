@@ -1,13 +1,11 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Today from '@/views/Today.vue';
 import UsersList from '@/views/users/UsersList.vue';
 import UsersListControls from '@/views/users/UsersListControls.vue';
 import UsersCreate from '@/views/users/UsersCreate.vue';
-import TransfersAdd from '@/views/transfers/TransfersAdd.vue';
-import TransfersList from '@/views/transfers/TransfersList.vue';
-import Lesson from '@/views/Lesson.vue';
-import App from '@/App.vue';
+import CashFlowAdd from '@/views/cash-flow/CashFlowAdd.vue';
+import CashFlowList from '@/views/cash-flow/CashFlowList.vue';
+import CFCategoriesList from '@/views/cf-categories/CFCategoriesList.vue';
 
 Vue.use(Router);
 
@@ -29,14 +27,24 @@ export default new Router({
       component: {render: (h) => h(UsersCreate)},
     },
     {
-      path: '/transfers/add',
-      name: 'transfers.add',
-      component: {render: (h) => h(TransfersAdd)},
+      path: '/cash-flow',
+      name: 'cash-flow.list',
+      component: {render: (h) => h(CashFlowList)},
+      children: [
+        {
+          path: '/add',
+          name: 'cash-flow.add',
+          component: {render: (h) => h(CashFlowAdd)},
+        },
+      ],
     },
     {
-      path: '/transfers/list',
-      name: 'transfers.list',
-      component: {render: (h) => h(TransfersList)},
+      path: '/cf-categories',
+      name: 'cf-categories.list',
+      component: {render: (h) => h(CFCategoriesList)},
+      children: [
+
+      ],
     },
     // {
     //   path: '/',

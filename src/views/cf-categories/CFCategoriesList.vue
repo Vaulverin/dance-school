@@ -14,15 +14,15 @@
         <v-flex xs12>
             <v-card>
                 <v-list>
-                    <template v-for="(user, index) in users">
+                    <template v-for="(item, index) in items">
                         <v-list-tile :key="index"
-                                     @click="$router.push({name: 'cash-flow.add', query: {userId: user.id}})">
+                                     @click="$router.push({name: 'cf-categories.edit', query: {id: item.id}})">
                             <v-list-tile-content>
-                                <v-list-tile-title>{{user.name}}</v-list-tile-title>
+                                <v-list-tile-title>{{item.name}}</v-list-tile-title>
                             </v-list-tile-content>
                         </v-list-tile>
                     </template>
-                    <v-card-text v-show="!users.length">Ни чего не найдено</v-card-text>
+                    <v-card-text v-show="!items.length">Ни чего не найдено</v-card-text>
                 </v-list>
             </v-card>
         </v-flex>
@@ -33,27 +33,27 @@
   import {mapGetters} from 'vuex';
 
   export default {
-    name: "UsersList",
+    name: "CFCategoriesList",
     data() {
       return {};
     },
     computed: {
-      ...mapGetters('users', ['users']),
+      ...mapGetters('cfCategories', {items: 'categories'}),
       searchText() {
-        return this.$store.state.users.searchText;
+        return this.$store.state.cfCategories.searchText;
       }
     },
     mounted() {
-      if (this.users.length === 0) {
-        this.$store.dispatch('users/load');
+      if (this.items.length === 0) {
+        this.$store.dispatch('cfCategories/load');
       }
     },
     created() {
-      this.$store.commit('setViewTitle', 'Ученики');
+      this.$store.commit('setViewTitle', 'Категории ДДС');
     },
     methods: {
       search(e) {
-        this.$store.commit('users/search', e.target.value);
+        this.$store.commit('cfCategories/search', e.target.value);
       }
     }
   }
