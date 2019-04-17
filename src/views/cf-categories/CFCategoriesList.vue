@@ -16,7 +16,7 @@
                 <v-list>
                     <template v-for="(item, index) in items">
                         <v-list-tile :key="index"
-                                     @click="$router.push({name: 'cf-categories.edit', query: {id: item.id}})">
+                                     @click="$router.push({name: 'cf-categories.edit', params: {id: item.id}})">
                             <v-list-tile-content>
                                 <v-list-tile-title>{{item.name}}</v-list-tile-title>
                             </v-list-tile-content>

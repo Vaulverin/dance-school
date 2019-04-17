@@ -58,7 +58,7 @@
           v => !!v || 'Выберите пользователя!',
         ],
         comment: '',
-        userId: this.$route.query.userId,
+        userId: parseInt(this.$route.query.userId),
       }
     },
     created() {

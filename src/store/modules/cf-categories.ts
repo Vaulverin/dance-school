@@ -1,5 +1,9 @@
 import CFCategory from '@/models/CFCategory';
 
+function getById(state: any, id: number) {
+  return state.items.find((e: CFCategory) => e.id === id);
+}
+
 export default {
   namespaced: true,
   state: {
@@ -12,17 +16,19 @@ export default {
     searchText: '',
   },
   getters: {
-    getById: (state: any) => (id: number) => {
-      return state.items.find((e: CFCategory) => e.id === id);
-    },
+    getById: (state: any) => (id: number) => getById(state, id),
     categories(state: any) {
       let items = [...state.items];
       if (state.searchText) {
         items = items.filter((e: CFCategory) => e.name.toLowerCase().includes(state.searchText.toLowerCase()));
       }
       return items.sort((a: CFCategory, b: CFCategory) => {
-        if (a.name > b.name) { return -1; }
-        if (a.name < b.name) { return 1; }
+        if (a.name > b.name) {
+          return -1;
+        }
+        if (a.name < b.name) {
+          return 1;
+        }
         return 0;
       });
     },
@@ -30,6 +36,14 @@ export default {
   mutations: {
     add(state: any, items: CFCategory[]) {
       state.items = state.items.concat(items);
+    },
+    set(state: any, item: CFCategory) {
+      const cat = getById(state, item.id);
+      cat.name = item.name;
+      cat.defaultSum = item.defaultSum;
+    },
+    delete(state: any, id: number) {
+      state.items = state.items.filter((i: CFCategory) => i.id !== id);
     },
     search(state: any, search: string) {
       state.searchText = search;
@@ -49,6 +63,12 @@ export default {
         item.id = items[items.length - 1].id + 1;
       }
       context.commit('add', [item]);
+    },
+    async set(context: any, item: CFCategory) {
+      context.commit('set', item);
+    },
+    async delete(context: any, id: number) {
+      context.commit('delete', id);
     },
   },
 

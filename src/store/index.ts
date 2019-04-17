@@ -13,9 +13,10 @@ const debug = process.env.NODE_ENV !== 'production';
 export default new Vuex.Store({
   state: {
     viewTitle: '',
-    firstViews: ['users.list', 'cash-flow.list'],
+    firstViews: ['users.list', 'cash-flow.list', 'cf-categories.list'],
     alerts: [],
     notifications: [],
+    events: {},
   },
   mutations,
   actions,

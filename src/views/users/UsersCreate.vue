@@ -8,6 +8,7 @@
                 :rules="nameRules"
                 label="Имя"
                 required
+                autofocus
         />
         <v-text-field
                 v-model="lastName"

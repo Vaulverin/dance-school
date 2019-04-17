@@ -25,5 +25,13 @@ const mutations = {
   shiftNotification(state: any) {
     state.notifications.shift();
   },
+  addEventHandler(state: any, params: any) {
+    state.events[params.event] = params.handler;
+  },
+  emitEvent(state: any, name: string) {
+    if (state.events[name]) {
+      state.events[name]();
+    }
+  },
 };
 export default mutations;
